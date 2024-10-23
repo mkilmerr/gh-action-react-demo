@@ -1,5 +1,5 @@
 name: Deploy Project
-on: push 
+on: push
 jobs:
     test:
         runs-on: ubuntu-latest
@@ -10,12 +10,13 @@ jobs:
               uses: actions/setup-node@v4
               with:
                 node-version: 18
-            - name: install dependecies 
+            - name: install dependencies 
               run: npm ci
             - name: run tests
               run: npm test
-      deploy:
-       runs-on: ubuntu-latest
+
+    deploy:
+        runs-on: ubuntu-latest
         steps:
             - name: get code 
               uses: actions/checkout@v3
@@ -23,10 +24,9 @@ jobs:
               uses: actions/setup-node@v4
               with:
                 node-version: 18
-            - name: install dependecies 
+            - name: install dependencies 
               run: npm ci
             - name: run tests
               run: npm test
             - name: deploy 
               run: npm build
-
